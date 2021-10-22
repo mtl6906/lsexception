@@ -37,7 +37,8 @@ namespace ls
 				LS_EFIN,
 				LS_ENOCOMPLETE,
 				LS_ENOLENGTH,
-				LS_EALLOCATE
+				LS_EALLOCATE,
+				LS_EWOULDBLOCK
 			};
 			static const std::vector<std::string> messages;
 			explicit Exception(Code code);
