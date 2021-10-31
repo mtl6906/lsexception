@@ -31,7 +31,8 @@ namespace ls
 		"recv fin",
 		"no complete",
 		"no content-length",
-		"allocate error"
+		"allocate error",
+		"wouldblock error"
 	};
 
 	Exception::Exception(Code code) : code(code)
