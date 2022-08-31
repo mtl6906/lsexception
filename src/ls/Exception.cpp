@@ -6,7 +6,7 @@ using namespace std;
 
 namespace ls
 {
-	const vector<string> Exception::messages = {
+	vector<string> Exception::messages = {
 		"format error",
 		"no content error",
 		"exist error",
@@ -32,10 +32,14 @@ namespace ls
 		"no complete",
 		"no content-length",
 		"allocate error",
-		"wouldblock error"
+		"wouldblock error",
+		"type error",
+		"reset error",
+		"reuseport error",
+		"success",
 	};
 
-	Exception::Exception(Code code) : code(code)
+	Exception::Exception(int code) : code(code)
 	{
 		
 	}
@@ -47,13 +51,13 @@ namespace ls
 		return text.c_str();
 	}
 
-	Exception::Code Exception::getCode()
+	int Exception::getCode()
 	{
 		return code;
 	}
 
-	string Exception::message() const 
+	string &Exception::message() const 
 	{
-		return messages[(int)code];
+		return messages[messages.size() + code - 1];
 	}
 }	

@@ -13,7 +13,7 @@ namespace ls
 		public:
 			enum Code : int
 			{
-				LS_EFORMAT,
+				LS_EFORMAT = -29,
 				LS_ENOCONTENT,
 				LS_EEXIST,
 				LS_EFULL,
@@ -38,15 +38,19 @@ namespace ls
 				LS_ENOCOMPLETE,
 				LS_ENOLENGTH,
 				LS_EALLOCATE,
-				LS_EWOULDBLOCK
+				LS_EWOULDBLOCK,
+				LS_ETYPE,
+				LS_ERESET,
+				LS_EREUSEPORT,
+				LS_OK
 			};
-			static const std::vector<std::string> messages;
-			explicit Exception(Code code);
+			static std::vector<std::string> messages;
+			explicit Exception(int code);
 			const char *what() const noexcept override;
-			Code getCode();
+			int getCode();
+			virtual std::string &message() const;
 		protected:
-			virtual std::string message() const;
-			Code code;
+			int code;
 	};
 }
 
